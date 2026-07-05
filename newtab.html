@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>New Tab</title>
+<link rel="stylesheet" href="newtab.css">
+<script src="repos.js" defer></script>
+<script src="newtab.js" defer></script>
+</head>
+<body>
+
+<header class="clock" aria-hidden="true">
+  <span id="time"></span>
+  <span class="clock-dot"></span>
+  <span id="date"></span>
+</header>
+
+<main>
+  <img class="logo" src="assets/polymarket-icon-mono.svg" alt="">
+  <div class="terminal">
+    <div class="term-window">
+      <div class="term-line">
+        <span class="term-prompt">&#10095;</span>
+        <input id="term-input" type="text"
+               spellcheck="false" autocomplete="off" autocapitalize="off"
+               aria-label="Search or run a command" role="combobox"
+               aria-expanded="false" aria-controls="suggest">
+      </div>
+      <div class="suggest hidden" id="suggest" role="listbox"></div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <nav class="dock" id="dock" aria-label="Shortcuts">
+    <div class="dock-items" id="dock-items"></div>
+    <span class="dock-sep"></span>
+    <button class="dock-btn" id="settings-btn" title="Settings" aria-label="Open shortcut settings">
+      <img class="settings-icon" src="assets/settings.svg" alt="">
+    </button>
+  </nav>
+</footer>
+
+<div class="overlay hidden" id="overlay">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-head">
+      <span class="modal-title" id="modal-title">Shortcuts</span>
+      <button class="icon-btn" id="modal-close" aria-label="Close settings">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none"><path d="M14.3805 4.38044C14.7221 4.03887 15.277 4.03915 15.6188 4.38044C15.9605 4.72215 15.9605 5.27701 15.6188 5.61872L11.2379 9.99958L15.6188 14.3804C15.9605 14.7221 15.9605 15.277 15.6188 15.6187C15.2771 15.9604 14.7222 15.9604 14.3805 15.6187L9.99963 11.2379L5.61877 15.6187C5.27707 15.9604 4.7222 15.9604 4.38049 15.6187C4.03921 15.277 4.03893 14.722 4.38049 14.3804L8.76135 9.99958L4.38049 5.61872C4.03921 5.27698 4.03893 4.72201 4.38049 4.38044C4.72206 4.03887 5.27703 4.03915 5.61877 4.38044L9.99963 8.7613L14.3805 4.38044Z" fill="#8d909a"></path></svg>
+      </button>
+    </div>
+    <div class="modal-rows" id="modal-rows"></div>
+    <div class="modal-foot">
+      <button class="ghost-btn" id="add-shortcut">Add shortcut</button>
+      <button class="primary-btn" id="modal-done">Done</button>
+    </div>
+  </div>
+</div>
+
+<template id="tpl-dock-item">
+  <div class="dock-item">
+    <span class="dock-tip"></span>
+    <a class="dock-link">
+      <img class="dock-favicon" alt="">
+      <span class="dock-glyph hidden"></span>
+    </a>
+  </div>
+</template>
+
+<template id="tpl-row">
+  <div class="row">
+    <span class="row-favicon-frame">
+      <img class="row-favicon" alt="">
+    </span>
+    <input class="row-name" type="text" placeholder="Name" spellcheck="false">
+    <input class="row-url" type="text" placeholder="https://&#8230;" spellcheck="false">
+    <button class="icon-btn row-remove" title="Remove" aria-label="Remove shortcut">
+      <svg width="14" height="14" viewBox="0 0 20 20" fill="none"><path d="M14.3805 4.38044C14.7221 4.03887 15.277 4.03915 15.6188 4.38044C15.9605 4.72215 15.9605 5.27701 15.6188 5.61872L11.2379 9.99958L15.6188 14.3804C15.9605 14.7221 15.9605 15.277 15.6188 15.6187C15.2771 15.9604 14.7222 15.9604 14.3805 15.6187L9.99963 11.2379L5.61877 15.6187C5.27707 15.9604 4.7222 15.9604 4.38049 15.6187C4.03921 15.277 4.03893 14.722 4.38049 14.3804L8.76135 9.99958L4.38049 5.61872C4.03921 5.27698 4.03893 4.72201 4.38049 4.38044C4.72206 4.03887 5.27703 4.03915 5.61877 4.38044L9.99963 8.7613L14.3805 4.38044Z" fill="#8d909a"></path></svg>
+    </button>
+  </div>
+</template>
+
+</body>
+</html>
